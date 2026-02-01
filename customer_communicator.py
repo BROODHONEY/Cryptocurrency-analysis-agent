@@ -19,7 +19,7 @@ class CustomerCommunicator:
 
     def __init__(self, groq_api_key: str = None):
         self.groq_api_key = groq_api_key or os.getenv("GROQ_API_KEY")
-        self.llm = ChatGroq(api_key=self.groq_api_key, model="openai/gpt-oss-20b")
+        self.llm = ChatGroq(api_key=self.groq_api_key, model="llama-3.3-70b-versatile")
 
     def parse_user_request(self, user_input: str) -> CryptoAnalysisRequest:
         """Convert natural language to structured request"""
