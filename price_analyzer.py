@@ -19,8 +19,10 @@ class PriceAnalyzer:
     
     def get_coin_id(self, cryptocurrency: str) -> str:
         """converts user input to CoinGecko IDs."""
+
         if cryptocurrency.lower() in self.coin_map:
             return self.coin_map[cryptocurrency.lower()]
+        
         return cryptocurrency.lower()
     
     def process_price_data(self, data: Dict, cryptocurrency: str) -> Dict[str, Any]:
@@ -29,8 +31,7 @@ class PriceAnalyzer:
         prices = data.get("prices", [])
 
         if not prices:
-            return {"error": "No price data available"}
-        
+            return {"error": "No price data available"}       
         price_values = [p[1] for p in prices]
 
         current_price = price_values[-1]
@@ -57,6 +58,7 @@ class PriceAnalyzer:
     
     def fetch_price_data(self, cryptocurrency: str, days: int = 7) -> Dict[str, Any]:
         """Fetches historical price data for a given cryptocurrency."""
+        
         coin_id = self.get_coin_id(cryptocurrency)
         url = f"{self.base_url}/coins/{coin_id}/market_chart"
         params = {
