@@ -73,8 +73,8 @@ class PriceAnalyzer:
 if __name__ == "__main__":
     analyzer = PriceAnalyzer()
 
-    crypto = "bitcoin"
-    days = 7
+    crypto = "eth"
+    days = 30
 
     print(f"Fetching price data for {crypto} over the last {days} days...")
     results = analyzer.fetch_price_data(crypto, days)
